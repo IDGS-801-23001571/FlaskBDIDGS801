@@ -4,6 +4,7 @@
 {% block container %}
 
 <form method="POST" action="{{ url_for('Alumnos') }}" class="max-w-sm mx-auto space-y-4 w-full">
+    {{ form.csrf_token }}
     <div>
         <label for="nombre" class="block mb-2.5 text-sm font-medium text-gray-900">Nombre</label>
         <input type="text" id="nombre" name="nombre"
