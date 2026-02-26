@@ -27,10 +27,13 @@
             Nombre
           </th>
           <th scope="col" class="px-6 py-3 font-medium">
-            Apaterno
+            Apellidos
           </th>
           <th scope="col" class="px-6 py-3 font-medium">
             Email
+          </th>
+          <th scope="col" class="px-6 py-3 font-medium">
+            Teléfono
           </th>
           <th scope="col" class="px-6 py-3 font-medium">
             Editar
@@ -51,10 +54,13 @@
             {{alum.nombre}}
           </th>
           <td class="px-6 py-4">
-            {{alum.apaterno}}
+            {{alum.apellidos}}
           </td>
           <td class="px-6 py-4">
             {{alum.email}}
+          </td>
+          <td class="px-6 py-4">
+            {{alum.telefono}}
           </td>
 
           <td class="px-6 py-4 text-right">
@@ -84,16 +90,17 @@
             </a>
           </td>
           <td class="px-6 py-4 text-right">
-            <a href="eliminar?id={{ alum.id }}"></a>
-            <button type="button"
-              class="inline-flex items-center text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5">
-              <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                width="24" height="24" fill="none" viewBox="0 0 24 24">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z" />
-              </svg>
-              Eliminar
-            </button>
+            <a href="eliminar?id={{ alum.id }}">
+              <button type="button"
+                class="inline-flex items-center text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5">
+                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                  width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z" />
+                </svg>
+                Eliminar
+              </button>
+            </a>
           </td>
         </tr>
         {%endfor%}
