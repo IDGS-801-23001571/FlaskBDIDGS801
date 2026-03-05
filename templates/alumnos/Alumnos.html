@@ -3,8 +3,9 @@
 
 {% block container %}
 
-<form method="POST" action="{{ url_for('alumnos') }}" class="max-w-sm mx-auto space-y-4 w-full">
+<form method="POST" action="{{ url_for('alumnos.alumnos_crud') }}" class="max-w-sm mx-auto space-y-4 w-full">
   {{ form.csrf_token }}
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
   <div>
     <label for="nombre" class="block mb-2.5 text-sm font-medium text-gray-900">Nombre</label>
@@ -40,7 +41,7 @@
       Guardar
     </button>
 
-    <a href="{{ url_for('index') }}"
+    <a href="{{ url_for('alumnos.index') }}"
       class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-4 py-2.5">
       Cancelar
     </a>

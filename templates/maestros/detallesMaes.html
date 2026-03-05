@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+{% block container %}
+<div class="py-32 relative overflow-x-auto sm:rounded-lg justify-content:center">
+
+  <div class="bg-neutral-primary-soft block max-w-sm p-6 border border-default rounded-base shadow-xs">
+    <h5 class="mt-2 mb-2 text-2xl font-semibold tracking-tight text-heading">Matrícula: {{ matricula }}</h5>
+    <p class="mb-3 text-body">Nombre: {{ nombre }}</p>
+    <p class="mb-3 text-body">Apellidos: {{ apellidos }}</p>
+    <p class="mb-3 text-body">Especialidad: {{ especialidad }}</p>
+    <p class="mb-3 text-body">Email: {{ email }}</p>
+
+    <a href="{{ url_for('maestros.listado_maestros') }}"
+       class="mt-5 inline-flex items-center text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium shadow-xs font-medium rounded-base text-sm px-4 py-2.5">
+      Regresar
+    </a>
+  </div>
+
+</div>
+{% endblock %}
