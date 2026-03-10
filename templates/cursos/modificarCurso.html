@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+{% block container %}
+
+<div class="mt-5">
+  <form action="" method="POST" novalidate class="max-w-md mx-auto mt-5">
+    {{ form.csrf_token }}
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+    <input type="hidden" name="id" value="{{ form.id.data }}">
+
+    <div class="mb-5">
+      <label class="block mb-2 text-sm font-medium text-gray-900">Nombre</label>
+      <input type="text" name="nombre" value="{{ form.nombre.data }}"
+        class="block w-full px-3 py-2 text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+        required>
+    </div>
+
+    <div class="mb-5">
+      <label class="block mb-2 text-sm font-medium text-gray-900">Descripción</label>
+      <input type="text" name="descripcion" value="{{ form.descripcion.data }}"
+        class="block w-full px-3 py-2 text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+    </div>
+
+    <div class="mb-5">
+      <label class="block mb-2 text-sm font-medium text-gray-900">Maestro</label>
+      <select name="maestro_id"
+        class="block w-full px-3 py-2 text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+        required>
+        {% for maestro in maestros %}
+          <option value="{{ maestro.matricula }}"
+            {% if maestro.matricula == form.maestro_id.data %}selected{% endif %}>
+            {{ maestro.matricula }} - {{ maestro.nombre }} {{ maestro.apellidos }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <button type="submit"
+      class="inline-flex items-center text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-4 py-2.5">
+      Modificar
+    </button>
+
+    <a href="{{ url_for('cursos.listado_cursos') }}"
+      class="inline-flex items-center ml-3 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5">
+      Cancelar
+    </a>
+  </form>
+</div>
+
+{% endblock %}

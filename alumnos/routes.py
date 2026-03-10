@@ -5,7 +5,6 @@ import forms
 from models import db, Alumnos
 
 
-@alumnos.route("/", methods=["GET"])
 @alumnos.route("/index", methods=["GET"])
 def index():
     create_form = forms.UserForm2(request.form)
@@ -45,7 +44,8 @@ def detalles():
         nombre=alum1.nombre,
         apellidos=alum1.apellidos,
         email=alum1.email,
-        telefono=alum1.telefono
+        telefono=alum1.telefono,
+        cursos=alum1.cursos
     )
 
 
@@ -107,5 +107,4 @@ def eliminar():
 
     db.session.delete(alum1)
     db.session.commit()
-    flash("Alumno eliminado correctamente")
     return redirect(url_for("alumnos.index"))

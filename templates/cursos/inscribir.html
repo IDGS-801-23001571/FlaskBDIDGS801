@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block container %}
+
+<form method="POST" action="{{ url_for('cursos.inscribir') }}" class="max-w-sm mx-auto space-y-4 w-full">
+  {{ form.csrf_token }}
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+  <div>
+    <label class="block mb-2.5 text-sm font-medium text-gray-900">Alumno</label>
+    <select name="alumno_id"
+      class="bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full px-3 py-2"
+      required>
+      <option value="">Selecciona un alumno</option>
+      {% for alumno in alumnos %}
+        <option value="{{ alumno.id }}">
+          {{ alumno.id }} - {{ alumno.nombre }} {{ alumno.apellidos }}
+        </option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div>
+    <label class="block mb-2.5 text-sm font-medium text-gray-900">Curso</label>
+    <select name="curso_id"
+      class="bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full px-3 py-2"
+      required>
+      <option value="">Selecciona un curso</option>
+      {% for curso in cursos %}
+        <option value="{{ curso.id }}">
+          {{ curso.id }} - {{ curso.nombre }}
+        </option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="flex gap-2">
+    <button type="submit" class="text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-4 py-2.5">
+      Inscribir
+    </button>
+
+    <a href="{{ url_for('cursos.listado_cursos') }}"
+       class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 font-medium rounded-lg text-sm px-4 py-2.5">
+      Volver
+    </a>
+  </div>
+</form>
+
+{% endblock %}

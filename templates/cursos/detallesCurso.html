@@ -6,35 +6,36 @@
               border border-default rounded-base shadow-xs">
 
     <h5 class="text-3xl font-semibold tracking-tight text-heading mb-6">
-      Nombre: {{ nombre }}
+      Curso: {{ curso.nombre }}
     </h5>
 
     <div class="space-y-4 text-body text-lg">
-      <p><span class="font-medium">Apellidos:</span> {{ apellidos }}</p>
-      <p><span class="font-medium">Email:</span> {{ email }}</p>
-      <p><span class="font-medium">Teléfono:</span> {{ telefono }}</p>
+      <p><span class="font-medium">ID:</span> {{ curso.id }}</p>
+      <p><span class="font-medium">Descripción:</span> {{ curso.descripcion }}</p>
+      <p><span class="font-medium">Maestro:</span> {{ curso.maestro.nombre }} {{ curso.maestro.apellidos }}</p>
+      <p><span class="font-medium">Alumnos inscritos:</span> {{ curso.alumnos|length }}</p>
     </div>
 
     <div class="mt-8">
       <h6 class="text-xl font-semibold text-heading mb-4">
-        Cursos inscritos
+        Lista de alumnos inscritos
       </h6>
 
-      {% if cursos %}
+      {% if curso.alumnos %}
         <ul class="space-y-2 text-body">
-          {% for curso in cursos %}
+          {% for alumno in curso.alumnos %}
             <li class="border border-default rounded-base px-4 py-3">
-              {{ curso.nombre }}
+              {{ alumno.nombre }} {{ alumno.apellidos }}
             </li>
           {% endfor %}
         </ul>
       {% else %}
-        <p class="text-body">Este alumno no está inscrito en ningún curso.</p>
+        <p class="text-body">No hay alumnos inscritos en este curso.</p>
       {% endif %}
     </div>
 
     <div class="mt-8">
-      <a href="{{ url_for('alumnos.index') }}"
+      <a href="{{ url_for('cursos.listado_cursos') }}"
          class="inline-flex items-center text-body
                 bg-neutral-secondary-medium box-border border border-default-medium
                 hover:bg-neutral-tertiary-medium shadow-xs

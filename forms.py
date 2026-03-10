@@ -47,3 +47,26 @@ class MaestroForm(Form):
         validators.Email(message="Ingresa correo valido")
     ])
 
+class CursoForm(Form):
+    id = IntegerField("id")
+    nombre = StringField("nombre", [
+        validators.DataRequired(message="El campo es requerido"),
+        validators.length(min=2, max=150, message="Requiere min=2 max=150")
+    ])
+    descripcion = StringField("descripcion", [
+        validators.Optional(),
+        validators.length(max=500, message="Máximo 500 caracteres")
+    ])
+    maestro_id = IntegerField("maestro_id", [
+        validators.DataRequired(message="El campo es requerido")
+    ])
+
+
+class InscripcionForm(Form):
+    alumno_id = IntegerField("alumno_id", [
+        validators.DataRequired(message="El campo es requerido")
+    ])
+    curso_id = IntegerField("curso_id", [
+        validators.DataRequired(message="El campo es requerido")
+    ])
+
